@@ -1,26 +1,26 @@
 import { getTrack, getTrackAnalysis, getArtists } from "./modules/spotify.js";
 
-async function getDatabase() {
-  var database = await fetch(
-    "https://spreadsheets.google.com/feeds/list/1JOm_qfQpljX4OS7dfq1eKKWlwjzeZJ_i9dDWKp9j-Uk/od6/public/values?alt=json",
-    {
-      method: "GET"
-    }
-  )
-    .then((response) => response.json())
-    .catch((err) => {
-      console.error(err);
-    });
-  return database.feed.entry;
-}
-async function getFlatId(spotifyId) {
-  var database = await getDatabase();
-  for (var i = 0; i < database.length; i++) {
-    if (database[i].gsx$spotifyid.$t == spotifyId) {
-      return database[i].gsx$flatid.$t;
-    }
-  }
-}
+// async function getDatabase() {
+//   var database = await fetch(
+//     "https://spreadsheets.google.com/feeds/list/1JOm_qfQpljX4OS7dfq1eKKWlwjzeZJ_i9dDWKp9j-Uk/od6/public/values?alt=json",
+//     {
+//       method: "GET"
+//     }
+//   )
+//     .then((response) => response.json())
+//     .catch((err) => {
+//       console.error(err);
+//     });
+//   return database.feed.entry;
+// }
+// async function getFlatId(spotifyId) {
+//   var database = await getDatabase();
+//   for (var i = 0; i < database.length; i++) {
+//     if (database[i].gsx$spotifyid.$t == spotifyId) {
+//       return database[i].gsx$flatid.$t;
+//     }
+//   }
+// }
 
 var urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams.get("track"));
@@ -48,35 +48,35 @@ async function changeDOM() {
   console.log(track);
 
   let note = (function note(value) {
-    return value == 0
+    return value === 0
       ? "C"
-      : value == 1
+      : value === 1
       ? "C#"
-      : value == 2
+      : value === 2
       ? "D"
-      : value == 3
+      : value === 3
       ? "D#"
-      : value == 4
+      : value === 4
       ? "E"
-      : value == 5
+      : value === 5
       ? "F"
-      : value == 6
+      : value === 6
       ? "F#"
-      : value == 7
+      : value === 7
       ? "G"
-      : value == 8
+      : value === 8
       ? "G#"
-      : value == 9
+      : value === 9
       ? "A"
-      : value == 10
+      : value === 10
       ? "A#"
-      : value == 11
+      : value === 11
       ? "B"
       : "";
   })(track.trackAnalysis.track.key);
 
   let mode = (function mode(value) {
-    return value == 0 ? " Minor" : value == 1 ? " Major" : "";
+    return value === 0 ? " Minor" : value === 1 ? " Major" : "";
   })(track.trackAnalysis.track.mode);
 
   document.querySelector("#key").innerHTML = note + mode;
