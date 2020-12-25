@@ -82,10 +82,11 @@ async function changeDOM() {
   document.querySelector("#key").innerHTML = note + mode;
   document.querySelector("#tempo").innerHTML =
     Math.round(track.trackAnalysis.track.tempo) + " bpm";
-  document.querySelector("#album-name").innerHTML = track.album.name;
   document.querySelector("#name").innerHTML = track.name;
   document.querySelector("#album-art").src = track.album.images[0].url;
-
+  if (track.album.name !== track.name) {
+    document.querySelector("#album-name").innerHTML = track.album.name;
+  }
   track.artists.forEach((artist) => {
     let newElement = document.createElement("li");
     newElement.setAttribute("style", "list-style: none; display: inline-block");
