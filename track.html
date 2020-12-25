@@ -10,6 +10,8 @@
     ></script>
     <script src="https://prod.flat-cdn.com/embed-js/v1.3.0/embed.min.js"></script>
     <script type="module" src="/modules/spotify.js"></script>
+    <script type="module" src="home.js"></script>
+
     <link rel="stylesheet" href="track.css" />
   </head>
   <body>
@@ -21,40 +23,69 @@
         padding-left: 200px;
       "
     >
-      <div style="display: flex;" ;>
-        <img
-          style="width: 200px; height: 200px;"
-          id="album-art"
-          src=""
-          alt=""
-        />
+      <div style="height: 50px;">
+        <div style="display: table; float: left; padding: 20px;">
+          <ul style="list-style: none;">
+            <li style="display: inline; padding: 10px;">
+              <a style="text-decoration: none;" href="">Home</a>
+            </li>
+            <li style="display: inline; padding: 10px;">
+              <a style="text-decoration: none;" href="">Playlists</a>
+            </li>
+            <li style="display: inline; padding: 10px;">
+              <a style="text-decoration: none;" href="">Artists</a>
+            </li>
+            <li style="display: inline; padding: 10px;">
+              <a style="text-decoration: none;" href="">Tracks</a>
+            </li>
+          </ul>
+        </div>
 
-        <ul style="list-style: none; padding-left: 50px;">
-          <li>
-            <h1 id="name"></h1>
-          </li>
-          <li>
-            <p id="album-name"></p>
-          </li>
-          <li>
-            <p id="key"></p>
-          </li>
-          <li>
-            <p id="tempo"></p>
-          </li>
-        </ul>
-        <div id="chart_div" style="width: 120px; height: 120px;"></div>
-
-        <p style="display: block; float: right;">release date</p>
+        <div class="wrapper" style="float: right;">
+          <div class="search-input">
+            <a href="" target="_blank" hidden></a>
+            <input type="text" placeholder="Enter artist name or song title" />
+            <div class="autocom-box"></div>
+          </div>
+        </div>
       </div>
 
-      <hr />
+      <div style="padding-top: 50px; padding-bottom: 0px;">
+        <div style="display: flex;" ;>
+          <img
+            style="width: 200px; height: 200px;"
+            id="album-art"
+            src=""
+            alt=""
+          />
 
-      <div id="artists">
-        <!-- artists are filled in here -->
+          <ul style="list-style: none; padding-left: 50px;">
+            <li>
+              <h1 id="name"></h1>
+            </li>
+            <li>
+              <p id="album-name"></p>
+            </li>
+            <li>
+              <p id="key"></p>
+            </li>
+            <li>
+              <p id="tempo"></p>
+            </li>
+          </ul>
+          <div id="chart_div" style="width: 120px; height: 120px;"></div>
+
+          <p style="display: block; float: right;">release date</p>
+        </div>
+
+        <hr />
+
+        <div id="artists">
+          <!-- artists are filled in here -->
+        </div>
+
+        <div style="height: 350px;" id="embed-container"></div>
       </div>
-
-      <div style="height: 350px;" id="embed-container"></div>
     </div>
   </body>
 </html>
